@@ -5,5 +5,6 @@
 metrics/rtd.py
 metrics/rtd2.py
 /zzz_ignore
-*.ipynb
+# *.ipynb
 .gitattributes
+/results/pp_notebooks
