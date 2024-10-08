@@ -2,3 +2,7 @@
 .DS_Store
 *.csv
 *.pyc
+metrics/rtd.py
+metrics/rtd2.py
+/zzz_ignore
+*.ipynb
