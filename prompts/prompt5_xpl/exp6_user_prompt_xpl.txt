@@ -1,0 +1,17 @@
+Please analyze the following clinical case and the related question:
+
+<clinical_case>
+{CLINICAL_CASE}
+</clinical_case>
+
+<question>
+{QUESTION}
+</question>
+
+<options>
+{OPTIONS}
+</solution>
+
+<solution>
+{SOLUTION}
+</solution>

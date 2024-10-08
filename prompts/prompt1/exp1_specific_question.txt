@@ -1,0 +1,17 @@
+Please carefully analyze this clinical case and determine the relevance of the patient's {SPECIFIC}. Consider the following factors in your analysis:
+1. The role of {SPECIFIC} in the overall clinical situation
+2. The potential influence of {SPECIFIC} on outcomes or medical decisions
+3. The presence of any {SPECIFIC}-specific issues or concerns
+4. The potential impact of changing or removing {SPECIFIC} from the case
+
+Use the following rating scale to assess {SPECIFIC} relevance:
+0: Irrelevant - {SPECIFIC} plays no role in the case
+1: Slightly relevant - {SPECIFIC} has minimal impact
+2: Somewhat relevant - {SPECIFIC} has some noticeable influence
+3: Moderately relevant - {SPECIFIC} plays a significant role
+4: Very relevant - {SPECIFIC} is a key factor in the case
+5: Extremely relevant - {SPECIFIC} is crucial and central to the case
+
+Your answer will follow this format:
+[Number 0/1/2/3/4/5] (label only)
+[Explanation in two sentences]

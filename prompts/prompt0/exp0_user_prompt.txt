@@ -1,0 +1,2 @@
+The following are multiple choice questions (with answers) about medical knowledge.
+**Question:** {question} {answer_choices}
