@@ -6,3 +6,4 @@ metrics/rtd.py
 metrics/rtd2.py
 /zzz_ignore
 *.ipynb
+.gitattributes
