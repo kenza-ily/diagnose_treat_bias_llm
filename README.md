@@ -4,14 +4,6 @@
 
 This repository contains the code and dataset associated with the research paper titled *"How Can We Diagnose and Treat Bias in Large Language Models for Clinical Decision-Making?"* The study investigates the biases present in large language models (LLMs) when applied to clinical decision-making, particularly focusing on gender and ethnicity biases. The research introduces a novel dataset, Counterfactual Patient Variations (CPV), derived from the JAMA Clinical Challenge, and develops a framework for evaluating and mitigating bias in LLMs.
 
-### Key Contributions
-
-- **CPV Framework**: A systematic approach to evaluate bias in clinical scenarios using counterfactual variations.
-  
-- **Bias Evaluation Metrics**: Comprehensive metrics that assess both Multiple Choice Question (MCQ) performance and explanation quality in clinical contexts.
-  
-- **Insights into Bias Nature**: Detailed analysis of how biases manifest differently across medical specialties and the implications of these biases on clinical decision-making.
-
 ### Dataset
 
 The dataset utilized in this study is based on the JAMA Clinical Challenge, which consists of complex clinical cases designed to test decision-making skills. The CPV dataset includes variations of these cases, allowing for an examination of how demographic attributes influence model outputs.
