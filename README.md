@@ -1,4 +1,4 @@
-## README for "How Can We Diagnose and Treat Bias in Large Language Models for Clinical Decision-Making?"
+## How Can We Diagnose and Treat Bias in Large Language Models for Clinical Decision-Making?
 
 ### Overview
 
