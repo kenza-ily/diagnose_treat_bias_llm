@@ -5,15 +5,11 @@
 
 ## TL;DR
 
-This repository accompanies the paper titled *"How Can We Diagnose and Treat Bias in Large Language Models for Clinical Decision-Making?"* The study explores bias in large language models (LLMs) within clinical decision-making, focusing on gender and ethnicity biases. We introduce a Counterfactual Patient Variations (CPV) dataset from JAMA Clinical Challenge cases and a framework to assess and mitigate these biases. Key findings highlight biases affecting outcomes and reasoning and examine strategies for debiasing.
-
-## Overview
-
-This project investigates biases in LLMs for clinical decision-making, utilizing the CPV dataset—a modified set of cases from the JAMA Clinical Challenge designed for this purpose.
+The study explores bias in large language models (LLMs) within clinical decision-making, focusing on gender and ethnicity biases. We introduce a Counterfactual Patient Variations (CPV) dataset from JAMA Clinical Challenge cases and a framework to assess and mitigate these biases. Key findings highlight biases affecting outcomes and _reasoning_ and examine strategies for debiasing.
 
 ## Dataset
 
-The CPV dataset builds on the JAMA Clinical Challenge, a collection of complex clinical cases. The data scraper is based on [ChallengeClinicalQA](https://github.com/HanjieChen/ChallengeClinicalQA) with added functionality to capture each clinical case’s date. A valid license is required to download the original JAMA dataset.
+The CPV dataset builds on the [JAMA Clinical Challenge](https://jamanetwork.com/collections/44038/clinical-challenge), a collection of complex clinical cases. The data scraper is based on [ChallengeClinicalQA](https://github.com/HanjieChen/ChallengeClinicalQA) and has added functionality to capture each clinical case’s date. A valid license is required to download the original JAMA dataset.
 
 ## Methodology
 
@@ -39,5 +35,6 @@ The CPV dataset builds on the JAMA Clinical Challenge, a collection of complex c
 
 ## Contact
 
-For more information, please contact [kenza.benkirane.23@ucl.ac.uk].
+For more information, please contact [kenza.benkirane.23@ucl.ac.uk](mailto:kenza.benkirane.23@ucl.ac.uk).
+
 
