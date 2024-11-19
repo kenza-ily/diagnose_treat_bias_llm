@@ -8,3 +8,5 @@ metrics/rtd2.py
 # *.ipynb
 .gitattributes
 /results/pp_notebooks
+/metrics/word_importance.py
+/aob
