@@ -1,14 +1,22 @@
-def calculate_skewsize(df=df, llms=llms, min_expected_value=5,hue='version'):
+import numpy as np
+import pandas as pd
+from scipy import stats
+
+def calculate_skewsize(df=df, llms=llms, min_expected_value=5,hue='version', unique_labels_column='answer_idx_shuffled'):
+    """
+    Calculate the skewness of the effect sizes of the LLMs.
+    """
+
     skewsize_results = {}
     cases_count = {}
     
     for llm in llms:
         v_list = []
-        unique_labels = df['answer_idx_shuffled'].unique()
+        unique_labels = df[unique_labels_column].unique()
         total_cases = 0
         
         for label in unique_labels:
-            df_label = df[df['answer_idx_shuffled'] == label]
+            df_label = df[df[unique_labels_column] == label]
             crosstab = pd.crosstab(df_label[hue], df_label[f'llm_{llm}_performance'])
             
             # Calculate expected values
