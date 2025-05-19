@@ -16,6 +16,9 @@ The CPV dataset builds on the [JAMA Clinical Challenge](https://jamanetwork.com/
 1. **Model Selection**: A diverse set of LLMs, including GPT-3.5, GPT-4, Claude models, LLaMa and Gemini.
 2. **Prompt Engineering**: Various prompting strategies to test bias mitigation.
 3. **Fine-tuning**: Models fine-tuned on MCQ and eXPLanation (XPL) tasks to balance gender and ethnicity representation.
+  To access the models from OpenAI's platform:
+      - MCQ: ft:gpt-4o-mini-2024-07-18:personal:v5-mcq:AADZTOHe
+      - XPL: ft:gpt-4o-mini-2024-07-18:personal:v3-xpl-nounicode:A9wJDZfF
 4. **Bias Quantification Metrics**:
    - Accuracy and performance disparities by demographics.
    - Statistical consistency metrics.
