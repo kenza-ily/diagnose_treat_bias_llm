@@ -12,3 +12,14 @@ metrics/rtd2.py
 /aob
 
 sandbox.ipynb
+diagnose_treat_bias_llm.pdf
+/presenting
+/aclpubcheck
+acl-copyright-transfer.pdf
+*.pkl
+*.parquet
+*.json
+__pycache__/
+*.egg-info/
+dist/
+.env

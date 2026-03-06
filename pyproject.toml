@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "cpv-bias"
+version = "1.0.0"
+description = "Counterfactual Patient Variations — bias detection in LLMs for clinical decision-making"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "nltk",
+    "rouge-score",
+    "torch",
+    "scikit-learn",
+    "numpy",
+    "pandas",
+    "scipy",
+    "openai",
+    "anthropic",
+    "transformers",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cpv*"]
