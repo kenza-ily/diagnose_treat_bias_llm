@@ -1,6 +1,6 @@
 # How Can We Diagnose and Treat Bias in LLMs for Clinical Decision-Making?
 
-**[Paper (NAACL 2025)](https://arxiv.org/abs/2410.16574)** | **[HuggingFace datasets](https://huggingface.co/kenza-ily)** | Contact: [contact@kenza-ily.com](mailto:contact@kenza-ily.com)
+**[Paper (NAACL 2025)](https://arxiv.org/abs/2410.16574)** | **[HuggingFace datasets collection](https://huggingface.co/collections/kenza-ily/counterfactual-patient-variations-cpv)** | Contact: [contact@kenza-ily.com](mailto:contact@kenza-ily.com)
 
 ## Overview
 
