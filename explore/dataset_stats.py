@@ -1,36 +1,11 @@
 """CLI tool for inspecting CPV datasets (local parquet/csv or HuggingFace)."""
 
 import argparse
-import sys
 from pathlib import Path
 
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
-from tests.utils import validate_cpv_schema, check_demographic_distribution, CPV_REQUIRED_COLUMNS
-
-
-def load_source(
-    source: str,
-    config: str | None = None,
-    split: str = "train",
-) -> pd.DataFrame:
-    """Load a dataset from a local file or HuggingFace Hub."""
-    p = Path(source)
-    if p.exists():
-        if p.suffix == ".parquet":
-            return pd.read_parquet(p)
-        elif p.suffix == ".csv":
-            return pd.read_csv(p)
-        else:
-            raise ValueError(f"Unsupported file format: {p.suffix}")
-    else:
-        from datasets import load_dataset
-        kwargs = {"split": split}
-        if config:
-            kwargs["name"] = config
-        ds = load_dataset(source, **kwargs)
-        return ds.to_pandas()
+from cpv.data import validate_cpv_schema, check_demographic_distribution, CPV_REQUIRED_COLUMNS, load
 
 
 def print_report(df: pd.DataFrame, sample_n: int = 5) -> None:
@@ -112,7 +87,7 @@ def main() -> None:
     args = parser.parse_args()
 
     print(f"Loading: {args.source}")
-    df = load_source(args.source, config=args.config, split=args.split)
+    df = load(args.source, config=args.config, split=args.split)
     print_report(df, sample_n=args.sample)
 
 

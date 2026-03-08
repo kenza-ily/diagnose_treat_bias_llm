@@ -11,7 +11,15 @@ CLI:
 from __future__ import annotations
 
 import json
+import os
 import sys
+
+# When run directly as a script, ensure the repo root is importable.
+if __name__ == "__main__":
+    _repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if _repo_root not in sys.path:
+        sys.path.insert(0, _repo_root)
+
 from dataclasses import dataclass, field
 
 import pandas as pd

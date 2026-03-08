@@ -76,6 +76,73 @@ pip install sentence-transformers scikit-learn
 
 ---
 
+## Using the CPV Framework
+
+After installation, `import cpv` gives you the full public API.
+
+### Load a dataset
+
+```python
+import cpv
+
+# From HuggingFace Hub
+df = cpv.load("kenza-ily/medqa-cpv", split="test")
+
+# From a local parquet or CSV file
+df = cpv.load("tests/medqa_cpv/medqa_cpv.parquet")
+```
+
+### Inspect & validate
+
+```python
+errors = cpv.validate_cpv_schema(df)
+# Returns a list of error strings; empty list means the schema is valid.
+
+dist = cpv.check_demographic_distribution(df)
+# Returns gender counts, ethnicity counts, and a gender × ethnicity crosstab.
+```
+
+### Build CPV variants from a raw dataset
+
+```python
+# Drop cases whose original text already mentions an ethnicity keyword
+df_filtered = cpv.filter_ethnicity_mentions(df_raw)
+
+# Expand to all gender × ethnicity combinations
+df_cpv = cpv.expand_to_cpv_variants(df_filtered)
+```
+
+### Evaluate LLM predictions
+
+```python
+# Accuracy + performance disparity + SkewSize (answer columns only)
+results = cpv.evaluate(df, llm_col="llm_gpt4_answer")
+
+# Also run BLEU / ROUGE-L / cosine similarity on free-text explanations
+results = cpv.evaluate(df, llm_col="llm_gpt4_answer", explanation_col="llm_gpt4_explanation")
+```
+
+`cpv.evaluate` returns a `CPVResults` dataclass with the following fields:
+
+| Field | Description |
+|---|---|
+| `accuracy` | Overall accuracy across all CPV variants |
+| `accuracy_by_group` | Accuracy broken down by gender and ethnicity |
+| `performance_disparity` | Max accuracy gap across demographic groups |
+| `skewsize` | SkewSize score — extent to which answer distributions shift across variants |
+| `bleu` | BLEU score across variants (requires `explanation_col`) |
+| `rouge_l` | ROUGE-L score across variants (requires `explanation_col`) |
+| `cossim` | Cosine similarity across variants (requires `sentence-transformers`) |
+| `gender_bias` | GenderBias(C) scores per group (requires `sentence-transformers`) |
+
+### Use individual metrics directly
+
+```python
+from cpv.metrics import accuracy_by_group, calculate_skewsize, evaluate_gender_bias
+```
+
+---
+
 ## Generating the CPV Datasets
 
 Scripts are in `tests/<dataset>_cpv/create.py`. Each script downloads the source dataset from HuggingFace, filters ethnicity-mentioned cases, expands to CPV variants, saves a local `.parquet`, and writes a `cpv_report.md`.
@@ -161,7 +228,10 @@ Each `create.py` run generates a structured Markdown report containing:
 
 ```
 cpv/
+├── data.py                     # load(), expand_to_cpv_variants(), validate_cpv_schema(), filter_ethnicity_mentions(), check_demographic_distribution()
+├── evaluate.py                 # evaluate() → CPVResults
 ├── metrics/
+│   ├── accuracy.py
 │   ├── bleu.py
 │   ├── cossim.py
 │   ├── rouge_l.py
@@ -169,15 +239,10 @@ cpv/
 │   └── gender_direction/
 │       ├── gender_bias.py       # GenderBias(C) implementation (SBERT + PCA)
 │       └── sentence_lists.py   # ~600 gendered sentence pairs for PCA
-├── report.py                   # generate_cpv_report()
-└── config/
-    ├── ethnicityxgender.txt
-    └── costs.txt
+└── report.py                   # generate_cpv_report()
 
 tests/
-├── utils.py                    # shared CPV utilities
-│   # filter_ethnicity_mentions(), detect_gender(), expand_to_cpv_variants()
-│   # inject_demographics(), validate_cpv_schema(), check_demographic_distribution()
+├── utils.py                    # backward-compat shim (re-exports from cpv.data)
 ├── conftest.py                 # pytest fixtures (session-scoped parquet loaders)
 ├── medqa_cpv/
 │   ├── create.py               # dataset generation + HF push
