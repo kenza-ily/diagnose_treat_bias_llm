@@ -19,8 +19,13 @@ dependencies = [
     "openai",
     "anthropic",
     "transformers",
+    "datasets>=2.18",
+    "huggingface_hub>=0.22",
 ]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["cpv*"]
+include = ["cpv*", "tests*", "explore*"]
